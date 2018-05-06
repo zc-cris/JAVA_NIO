@@ -119,9 +119,11 @@ public class TestNonBlockingNIO {
 //                            buffer.clear();
 //                        }
                         int len = 0;
+                        // 将管道里的数据写入到缓冲区中
                         while((len = channel.read(buffer)) > 0) {
                             buffer.flip();
-                            System.out.println(new String(buffer.array(), 0, len));
+                            // 将缓冲区里的字节数据读取出来转换为字符串
+                            System.out.println(new String(buffer.array(), 0, buffer.limit()));
                             buffer.clear();
                         }
                        
